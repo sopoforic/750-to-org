@@ -35,7 +35,7 @@ def main():
     # the entry's date, the number of words, the number of minutes it
     # took to write, and the entry text, in that order. That is:
     # (DATE, WORDS, MINUTES, TEXT)
-    entries = [(datetime.date(int(entry[0:4]), int(entry[5:7]), int(entry[8:10])),
+    entries = [(datetime.datetime.strptime(entry[0:10], "%Y-%m-%d"),
                 int(re.search(num_words_regex, entry).group(1)),
                 float(re.search(num_minutes_regex, entry).group(1)),
                 entry[entry.find("\n") + 1:])
