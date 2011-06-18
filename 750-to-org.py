@@ -35,7 +35,11 @@ def main():
     # the entry's date, the number of words, the number of minutes it
     # took to write, and the entry text, in that order. That is:
     # (DATE, WORDS, MINUTES, TEXT)
-    entries = [(datetime.date(int(entry[0:4]), int(entry[5:7]), int(entry[8:10])), int(re.search(num_words_regex, entry).group(1)), float(re.search(num_minutes_regex, entry).group(1)), entry[entry.find("\n") + 1:]) for entry in entries]
+    entries = [(datetime.date(int(entry[0:4]), int(entry[5:7]), int(entry[8:10])),
+                int(re.search(num_words_regex, entry).group(1)),
+                float(re.search(num_minutes_regex, entry).group(1)),
+                entry[entry.find("\n") + 1:])
+               for entry in entries]
 
     orgtext = ""
     # Include the year heading if it's January, or if we're creating the
@@ -44,7 +48,7 @@ def main():
         orgtext += "* " + str(entries[0][0].year) + "\n"
     orgtext += "** " + entries[0][0].strftime("%Y-%m %B") + "\n"
     for entry in entries:
-        orgtext += "*** " + entry[0].isoformat() + " " + entry[0].strftime("%A") + "\n"
+        orgtext += "*** " + entry[0].strftime("%Y-%m-%d %A") + "\n"
         orgtext += ":PROPERTIES:\n"
         orgtext += ":WORD_COUNT: " + str(entry[1]) + "\n"
         orgtext += ":MINUTES: " + str(entry[2]) + "\n"
