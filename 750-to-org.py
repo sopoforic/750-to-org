@@ -22,7 +22,8 @@ def main():
         with open('750', 'rb') as f:
             text = f.read().decode('utf_8')
     except IOError:
-        print("Couldn't read file!")
+        print("Couldn't read export file! Make sure the file containing the exported entries\n" +
+        "is located in the same directory as this script, and that it is named '750'.")
         return
 
     entries = text.split("##### ENTRY ##### ")
@@ -61,6 +62,8 @@ def main():
     except IOError:
         print("Couldn't write to 750.org!")
         return
+
+    print("Added entries for " + entries[0][0].strftime("%B") + " to 750.org.")
 
 if __name__ == "__main__":
     main()
