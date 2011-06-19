@@ -1,4 +1,4 @@
-750-to-org, version 0.1, released 2011-06-18
+750-to-org, version 0.2, released 2011-06-19
 
 750-to-org takes the monthly files you can export from 750words.com
 and converts them for use with emacs org-mode.

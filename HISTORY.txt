@@ -1,0 +1,8 @@
+version 0.2, released 2011-06-19
+
+- Cleaned up the code
+- More informative messages
+
+version 0.1, released 2011-06-18
+
+- Initial Release
