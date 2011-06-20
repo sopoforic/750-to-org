@@ -23,7 +23,7 @@ def main(infile="750", outfile="750.org"):
         with open(infile, 'rb') as f:
             text = f.read().decode('utf_8')
     except IOError:
-        print("Couldn't read input file! Please check if you have the right path.")
+        print("Couldn't read input file! Please check if you have the right path.", file=sys.stderr)
         return
 
     entries = text.split("##### ENTRY ##### ")
@@ -60,7 +60,7 @@ def main(infile="750", outfile="750.org"):
         with open(outfile, "ab") as f:
             f.write(orgtext.encode("utf_8"))
     except IOError:
-        print("Couldn't write to " + outfile + "!")
+        print("Couldn't write to " + outfile + "!", file=sys.stderr)
         return
 
     print("Added entries for " + entries[0][0].strftime("%B") + " to " + outfile + ".")
