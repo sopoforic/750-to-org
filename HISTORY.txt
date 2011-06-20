@@ -1,3 +1,7 @@
+version 0.3, released 2011-06-20
+
+- Now input/output files can be specified on the command line
+
 version 0.2, released 2011-06-19
 
 - Cleaned up the code
