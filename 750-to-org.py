@@ -16,14 +16,14 @@
 import datetime
 import re
 import os
+import sys
 
-def main():
+def main(infile="750", outfile="750.org"):
     try:
-        with open('750', 'rb') as f:
+        with open(infile, 'rb') as f:
             text = f.read().decode('utf_8')
     except IOError:
-        print("Couldn't read export file! Make sure the file containing the exported entries\n" +
-        "is located in the same directory as this script, and that it is named '750'.")
+        print("Couldn't read input file! Please check if you have the right path.")
         return
 
     entries = text.split("##### ENTRY ##### ")
@@ -57,13 +57,16 @@ def main():
         orgtext += entry[3]
 
     try:
-        with open("750.org", "ab") as f:
+        with open(outfile, "ab") as f:
             f.write(orgtext.encode("utf_8"))
     except IOError:
-        print("Couldn't write to 750.org!")
+        print("Couldn't write to " + outfile + "!")
         return
 
-    print("Added entries for " + entries[0][0].strftime("%B") + " to 750.org.")
+    print("Added entries for " + entries[0][0].strftime("%B") + " to " + outfile + ".")
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) == 3:
+        main(sys.argv[1], sys.argv[2])
+    else:
+        main()
